@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 
+
+
+
 public class Gun : MonoBehaviour
 {
     private StarterAssetsInputs _input;
