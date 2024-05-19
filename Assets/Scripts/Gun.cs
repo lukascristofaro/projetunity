@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
     private GameObject bulletPrefab;
     [SerializeField]
     private GameObject bulletPoint;
-    private float bulletSpeed = 4000;
+    private float bulletSpeed = 10000;
     void Start()
     {
         _input = transform.root.GetComponent<StarterAssetsInputs>();

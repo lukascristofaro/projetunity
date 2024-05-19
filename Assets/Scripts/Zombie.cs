@@ -9,7 +9,11 @@ public class Zombie : MonoBehaviour
     public NavMeshAgent navAgent;
 
     public Transform TargetPoint;
-
+    private void Start()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        TargetPoint = player.transform;
+    }
     private void Update()
     {
         navAgent.SetDestination(TargetPoint.position);
