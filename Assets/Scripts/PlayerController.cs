@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,8 +8,14 @@ public class PlayerController : MonoBehaviour
     private bool inLife = true;
     private CharacterController characterController;
 
+    public Image redFilter;
+    public float filterDuration = 0.1f;
+
+
     private void Start()
     {
+        redFilter.enabled = false;
+
         characterController = GetComponent<CharacterController>();
     }
 
@@ -35,12 +43,22 @@ public class PlayerController : MonoBehaviour
         if (health > 0)
         {
             health -= damage;
+            StartCoroutine(ShowRedFilter());
         }
         else
         {
             health = 0;
             inLife = false;
         }
+
+
+    }
+
+    private IEnumerator ShowRedFilter()
+    {
+        redFilter.enabled = true;
+        yield return new WaitForSeconds(filterDuration);
+        redFilter.enabled = false;
     }
 
 }

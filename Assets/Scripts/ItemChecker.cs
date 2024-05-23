@@ -15,12 +15,11 @@ public class ItemChecker : MonoBehaviour
 
         if (itemsWithTag.Length > 0)
         {
-            Debug.Log("Il y a des objets avec le tag " + tagToCheck + " dans la scène.");
             return true;
         }
         else
         {
-            Debug.Log("Aucun objet avec le tag " + tagToCheck + " trouvé dans la scène.");
+            Debug.Log("Aucun" + tagToCheck);
             return false;
         }
     }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -13,6 +12,7 @@ public class Bullet : MonoBehaviour
         {
             return;
         }
+
         if (!collision.gameObject.CompareTag("Zombie"))
         {
             Destroy(gameObject);
@@ -23,6 +23,18 @@ public class Bullet : MonoBehaviour
 
             GameObject impact = Instantiate(impactPrefab, collision.contacts[0].point, rotation);
             Destroy(impact, 10f);
+        }
+        else
+        {
+            // Gérer la collision avec le zombie sans lui appliquer de recul
+            Rigidbody zombieRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            if (zombieRigidbody != null)
+            {
+                zombieRigidbody.velocity = Vector3.zero; // Annuler toute force appliquée
+                zombieRigidbody.angularVelocity = Vector3.zero; // Annuler toute rotation appliquée
+            }
+
+            Destroy(gameObject);
         }
     }
 }
