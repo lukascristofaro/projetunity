@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class Zombie : MonoBehaviour
     public Transform TargetPoint;
     private Animator animator;
 
-    private void Start()
+    void Start()
     {
         animator = GetComponentInChildren<Animator>();
         if (animator == null)
@@ -25,6 +23,7 @@ public class Zombie : MonoBehaviour
         if (player != null)
         {
             TargetPoint = player.transform;
+            animator.SetFloat("MoveSpeed", 1f);
         }
         else
         {
@@ -32,7 +31,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if (inLife)
         {
@@ -44,7 +43,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("bullet"))
         {
@@ -62,11 +61,25 @@ public class Zombie : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.Play("Attack");
-            navAgent.isStopped = true;
-        }
-        navAgent.isStopped = false;
+            animator.SetFloat("MoveSpeed", 0f);
 
+            animator.SetBool("Attack", true);
+            Debug.Log("Zombie attack");
+            animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+            animator.SetFloat("MoveSpeed", 1f);
+
+        }
+    }
+
+    void Death()
+    {
+        health = 0;
+        inLife = false;
+        Debug.Log("Zombie is dead");
+        animator.SetFloat("MoveSpeed", 0f);
+
+        animator.SetBool("Dead", true) ;
+        Destroy(gameObject, 2f);
     }
 
     private void getBulletDamage()
@@ -81,10 +94,7 @@ public class Zombie : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
-                health = 0;
-                inLife = false;
-
-                Debug.Log("Zombie is dead.");
+                Death();
             }
         }
     }

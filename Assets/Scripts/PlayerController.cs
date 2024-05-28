@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public int health = 100;
+    public int maxHealth = 100;
     private bool inLife = true;
     private CharacterController characterController;
 
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     private void getDamage(int damage)
     {
-        if (health > 0)
+        if (health > 10)
         {
             health -= damage;
             StartCoroutine(ShowRedFilter());

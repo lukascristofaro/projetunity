@@ -32,7 +32,6 @@ public class SpawnerItem : MonoBehaviour
 
     public void SpawnItem()
     {
-        //on crée un gameobjet dans la scnène à  la position, et rotation voulu.
         Instantiate(Item, SpawnPoint.position, SpawnPoint.rotation);
     }
 }
