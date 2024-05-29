@@ -20,6 +20,8 @@ public class Gun : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
 
+    public Pausemenu gamepause;
+
     void Start()
     {
         currentAmmo = maxAmmo;
@@ -38,10 +40,16 @@ public class Gun : MonoBehaviour
             StartCoroutine(Reload());
             return;
         }
-        if(_input.shoot && currentAmmo > 0)
+        if(_input.shoot && currentAmmo > 0 && !Pausemenu.InPause)
         {
             Shoot();
             _input.shoot = false;
+        }
+
+        if (_input.pause)
+        {
+            Pausemenu.PauseInput();
+            _input.pause = false;
         }
     }
 

@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool shoot;
 		public bool reload;
+		public bool pause;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -22,6 +23,8 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
         internal bool shootButtonDown;
+
+        public bool Pause { get; internal set; }
 
 #if ENABLE_INPUT_SYSTEM
         public void OnMove(InputValue value)
@@ -56,6 +59,12 @@ namespace StarterAssets
 		{
 			reload = value.isPressed;
 		}
+
+		public void OnPause(InputValue value)
+		{
+			pause = value.isPressed;
+		}
+
 #endif
 
 
