@@ -20,7 +20,6 @@ public class Gun : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
 
-    public Pausemenu gamepause;
 
     void Start()
     {

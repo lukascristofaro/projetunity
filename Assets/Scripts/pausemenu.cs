@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Pausemenu : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Pausemenu : MonoBehaviour
     public GameObject pauseMenuUI;
 
     public static Pausemenu instance;
+
+
 
     void Awake()
     {
@@ -46,7 +49,7 @@ public class Pausemenu : MonoBehaviour
         InPause = true;
     }
 
-    void Resume()
+    public void Resume()
     {
         Debug.Log("Resume");
         pauseMenuUI.SetActive(false);

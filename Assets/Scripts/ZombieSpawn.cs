@@ -1,40 +1,35 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class SpawnerItem : MonoBehaviour
 {
-    //variable a set sur unity
+    // Variable à définir dans Unity
     public GameObject Item;
     public Transform SpawnPoint;
 
     private ItemChecker itemChecker;
+    private bool isSpawning = false;
 
-    public int nbRound = 1;
+    public int nbRound = 0;
 
     public void Start()
     {
         SpawnItem();
-        itemChecker = new("Zombie");
-
-
+        itemChecker = new ItemChecker("Zombie");
     }
 
     public void Update()
     {
         bool thereAreZombie = itemChecker.Check();
-        if (thereAreZombie)
+        if (thereAreZombie || isSpawning)
         {
             return;
-        } else
+        }
+        else
         {
-            for (int i = 0; i < (int)Math.Pow(nbRound * 2, 2); i++)
-            {
-                StartCoroutine(WaitForZombieSpawn(1));
-
-            }
+            Debug.Log(nbRound);
+            StartCoroutine(SpawnItemsForRound());
+            nbRound++;
         }
     }
 
@@ -43,10 +38,14 @@ public class SpawnerItem : MonoBehaviour
         Instantiate(Item, SpawnPoint.position, SpawnPoint.rotation);
     }
 
-    private IEnumerator WaitForZombieSpawn(int time)
+    private IEnumerator SpawnItemsForRound()
     {
-        yield return new WaitForSeconds(time);
-        SpawnItem();
-
+        isSpawning = true;
+        for (int i = 0; i < nbRound; i++)
+        {
+            yield return new WaitForSeconds(1);
+            SpawnItem();
+        }
+        isSpawning = false;
     }
 }
