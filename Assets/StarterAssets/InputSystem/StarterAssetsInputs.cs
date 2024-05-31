@@ -13,6 +13,8 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool shoot;
+		public bool reload;
+		public bool pause;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -20,9 +22,12 @@ namespace StarterAssets
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
+        internal bool shootButtonDown;
+
+        public bool Pause { get; internal set; }
 
 #if ENABLE_INPUT_SYSTEM
-		public void OnMove(InputValue value)
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -49,6 +54,17 @@ namespace StarterAssets
 		{
 			shoot = value.isPressed;
 		}
+
+		public void OnReload(InputValue value)
+		{
+			reload = value.isPressed;
+		}
+
+		public void OnPause(InputValue value)
+		{
+			pause = value.isPressed;
+		}
+
 #endif
 
 

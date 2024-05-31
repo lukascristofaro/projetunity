@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2021011855917877205}
   - component: {fileID: -3897789297466427011}
   - component: {fileID: 5935258310915302769}
+  - component: {fileID: -1844969826956707198}
   m_Layer: 0
   m_Name: Gun.004.Bullet
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3535031116562127981}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: -0, w: 0.0000000754979}
+  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0.090603, y: 4.3112917, z: -23.67244}
-  m_LocalScale: {x: 0.34116998, y: 0.34116998, z: 0.34116998}
+  m_LocalScale: {x: 0.170585, y: 0.170585, z: 0.170585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!33 &7884079182853409226
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,7 +111,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 48
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!65 &5935258310915302769
 BoxCollider:
@@ -133,3 +134,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.28285772, y: 0.28285763, z: 0.85101634}
   m_Center: {x: -0.00000001490116, y: -0.0000000745058, z: 0.1429734}
+--- !u!114 &-1844969826956707198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3535031116562127981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8121817a15bb3c04ca51d52fe057de47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactPrefab: {fileID: 8210675516948932733, guid: d8f325848dff84c4bac98ae8b406f5d1, type: 3}

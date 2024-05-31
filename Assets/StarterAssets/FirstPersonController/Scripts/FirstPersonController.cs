@@ -119,8 +119,12 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			CameraRotation();
-		}
+			if (!Pausemenu.InPause && PlayerController.inLife)
+			{
+                CameraRotation();
+
+            }
+        }
 
 		private void GroundedCheck()
 		{
