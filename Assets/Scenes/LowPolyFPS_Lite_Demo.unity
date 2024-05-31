@@ -7845,9 +7845,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3535031116562127981, guid: dc56da5cfa0367246999c64a03d12c68, type: 3}
   bulletPoint: {fileID: 1979673003}
-  audioshot: {fileID: 8300000, guid: 230cc40940d81e24388fd20f25027b69, type: 3}
-  audioEmpty: {fileID: 8300000, guid: e2d619b92559c0e45857a6711d324224, type: 3}
-  audioReload: {fileID: 8300000, guid: 8d100c5555de50d42a24494f6adf5b01, type: 3}
+  audioshot: {fileID: 0}
+  audioEmpty: {fileID: 0}
+  audioReload: {fileID: 0}
   maxAmmo: 30
   currentAmmo: 0
   reloadTime: 1
