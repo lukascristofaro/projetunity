@@ -6,13 +6,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Pausemenu : MonoBehaviour
+public class DeathMenu : MonoBehaviour
 {
-    public static bool InPause = false;
+    public static bool isDead = false;
 
     public GameObject pauseMenuUI;
 
-    public static Pausemenu instance;
+    public static DeathMenu instance;
+
+    public string MainScene;
 
 
 
@@ -30,44 +32,38 @@ public class Pausemenu : MonoBehaviour
         }
     }
 
-    public static void PauseInput()
+    public static void DeathInput()
     {
-        if (InPause)
-        {
-            instance.Resume();
-        }
-        else
-        {
-            instance.Paused();
-        }
+        instance.Paused();
+
     }
 
-    void Paused()
+    public void Paused()
     {
         Cursor.lockState = CursorLockMode.None;
 
-        Debug.Log("Pause");
+        Debug.Log("Died");
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
-        InPause = true;
+        isDead = true;
     }
 
     public void Resume()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         Debug.Log("Resume");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
-        InPause = false;
+        isDead = false;
     }
 
     public void GetMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+
     }
 
-    public void Quit()
+    public void GetMainScene()
     {
-        Application.Quit();
+        SceneManager.LoadScene(MainScene);
     }
 }

@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public int health = 100;
     public int maxHealth = 100;
-    private bool inLife = true;
+    public static bool inLife = true;
+    public static int score = 0;
     private CharacterController characterController;
 
     public Image redFilter;
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log(inLife);
         redFilter.enabled = false;
 
         characterController = GetComponent<CharacterController>();
@@ -26,7 +30,7 @@ public class PlayerController : MonoBehaviour
         {
             characterController.enabled = false;
             return;
-        }
+        } 
 
         characterController.enabled = true;
     }
@@ -50,6 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
             inLife = false;
+            DeathMenu.DeathInput();
+
         }
 
 

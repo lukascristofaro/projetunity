@@ -125,6 +125,8 @@ MonoBehaviour:
   health: 100
   bulletDamage: 33
   TargetPoint: {fileID: 0}
+  animator: {fileID: 0}
+  model: {fileID: 8555379747838991600}
 --- !u!95 &7170630244060148880
 Animator:
   serializedVersion: 5

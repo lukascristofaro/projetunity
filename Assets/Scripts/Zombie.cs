@@ -11,6 +11,7 @@ public class Zombie : MonoBehaviour
     public Transform TargetPoint;
     private Animator animator;
 
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -80,6 +81,7 @@ public class Zombie : MonoBehaviour
 
         animator.SetBool("Dead", true) ;
         Destroy(gameObject, 2f);
+        PlayerController.score += 100;
     }
 
     private void getBulletDamage()
