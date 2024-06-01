@@ -2,6 +2,8 @@
 
 Le jeu est un jeu de zombie en survie où le but est de survivre le plus longtemps possible
 
+la premiere scene a lancer est MainMenu dans le dossier scene
+
 # Les touches
 
 les deplacement de base sont avec ZQSD
